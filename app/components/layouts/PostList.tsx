@@ -1,12 +1,24 @@
 import * as React from "react";
-import { PostItem } from "./PostItem";
+import PostItem from "./PostItem";
 
-export interface PostListProps {}
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
 
-export function PostList(props: PostListProps) {
+interface IPostListProps {
+  posts: Post[];
+}
+
+const PostList: React.FC<IPostListProps> = ({ posts }) => {
   return (
-    <div>
-      <PostItem />
+    <div className="flex flex-col gap-[45px]">
+      {posts.map((post) => (
+        <PostItem key={post.id} title={post.title} body={post.body} />
+      ))}
     </div>
   );
-}
+};
+
+export default PostList;
