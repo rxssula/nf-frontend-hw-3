@@ -22,6 +22,7 @@ const PostList: React.FC<IPostListProps> = ({ posts }) => {
           title={post.title}
           body={post.body}
           tags={post.tags}
+          image={`https://avatar.iran.liara.run/username?username=${post.id}`}
         />
       ))}
     </div>

@@ -8,9 +8,16 @@ export interface PostItemProps {
   title: string;
   body: string;
   tags: string[];
+  image: string;
 }
 
-const PostItem: React.FC<PostItemProps> = ({ id, title, body, tags }) => {
+const PostItem: React.FC<PostItemProps> = ({
+  id,
+  title,
+  body,
+  tags,
+  image,
+}) => {
   return (
     <div className="pb-9 border-b-[1px] gap-[100px] flex flex-row">
       <div className="flex flex-col gap-[70px]">
@@ -18,12 +25,13 @@ const PostItem: React.FC<PostItemProps> = ({ id, title, body, tags }) => {
           <div className="flex flex-row items-center">
             <Image
               className="rounded-full w-6 h-6 mr-1"
-              src="/images/woman.png"
+              src={image}
+              unoptimized
               width={24}
               height={24}
               alt="woman"
             />
-            <p className="text-[14px]">Author's name in Topics Name · 7 july</p>
+            <p className="text-[14px]">{`user_${id}`}</p>
           </div>
           <div className="flex flex-col gap-6">
             <Link href={`/showPost/${id}`}>
@@ -34,17 +42,18 @@ const PostItem: React.FC<PostItemProps> = ({ id, title, body, tags }) => {
         </div>
         <div className="flex flex-row">
           {tags.map((tag) => (
-            <Tag tag={tag} />
+            <Tag key={tag} tag={tag} />
           ))}
         </div>
       </div>
-      {/* <Image
+      <Image
         className="rounded-md w-[265px] h-[265px]"
-        src="/images/laptop.png"
+        src={`https://picsum.photos/265/?random=${id}`}
+        unoptimized
         width={265}
         height={265}
         alt="laptop"
-      /> */}
+      />
     </div>
   );
 };

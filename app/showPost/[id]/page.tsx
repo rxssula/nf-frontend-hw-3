@@ -42,19 +42,31 @@ const ShowPost = async ({ params }: { params: { id: number } }) => {
           />
         </Link>
       </div>
-      <div className="flex flex-col gap-16">
-        <div className="flex flex-col gap-6">
-          <h1 className="text-4xl font-[700]">{post.title}</h1>
-        </div>
-        <Image
-          src="/images/laptop.png"
-          alt="laptop"
-          width={1180}
-          height={480}
-          className="rounded-md object-cover w-[1120px] h-[480px]"
-        />
-        <div>
-          <p className="text-lg">{post.body}</p>
+      <div className="flex flex-col py-24">
+        <div className="flex flex-col gap-16">
+          <div>
+            <Image
+              className="object-cover w-14 h-14 rounded-full"
+              src={`https://avatar.iran.liara.run/username?username=${post.id}`}
+              unoptimized
+              alt="avatar"
+              width={64}
+              height={64}
+            />
+          </div>
+          <div className="flex flex-col gap-6">
+            <h1 className="text-4xl font-[700]">{post.title}</h1>
+          </div>
+          <Image
+            src="/images/laptop.png"
+            alt="laptop"
+            width={1180}
+            height={480}
+            className="rounded-md object-cover w-[1120px] h-[480px]"
+          />
+          <div>
+            <p className="text-lg">{post.body}</p>
+          </div>
         </div>
       </div>
     </div>
